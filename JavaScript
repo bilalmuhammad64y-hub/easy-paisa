@@ -1,0 +1,115 @@
+const express = require('express');
+const { Pool } = require('pg');
+const app = express();
+app.use(express.json());
+
+const pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'fintech_db',
+  password: 'yourpassword',
+  port: 5432,
+});
+
+// Money Transfer API Endpoint
+app.post('/api/transfer', async (req, res) => {
+  const { senderId, receiverId, amount } = req.body;
+  const client = await pool.connect();
+
+  try {
+    await client.query('BEGIN'); // Start ACID Transaction
+
+    // 1. Check Sender Balance
+    const senderWallet = await client.query('SELECT balance FROM wallets WHERE user_id = $1 FOR UPDATE', [senderId]);
+    if (senderWallet.rows[0].balance < amount) {
+      throw new Error('Insufficient balance');
+    }
+
+    // 2. Deduct from Sender
+    await client.query('UPDATE wallets SET balance = balance - $1 WHERE user_id = $2', [amount, senderId]);
+
+    // 3. Add to Receiver
+    await client.query('UPDATE wallets SET balance = balance + $1 WHERE user_id = $2', [amount, receiverId]);
+
+    // 4. Record Transaction
+    await client.query(
+      'INSERT INTO transactions (sender_wallet_id, receiver_wallet_id, amount, type, status) VALUES ($1, $2, $3, $4, $5)',
+      [senderId, receiverId, amount, 'TRANSFER', 'SUCCESS']
+    );
+
+    await client.query('COMMIT'); // Save changes
+    res.status(200).json({ success: true, message: 'Transfer successful' });
+  } catch (error) {
+    await client.query('ROLLBACK'); // Revert changes if failed
+    res.status(400).json({ success: false, message: error.message });
+  } finally {
+    client.release();
+  }
+});
+
+app.listen(3000, () => console.log('Fintech Server running on port 3000'));
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+
+export default function TransferScreen() {
+  const [receiverPhone, setReceiverPhone] = useState('');
+  const [amount, setAmount] = useState('');
+
+  const handleTransfer = async () => {
+    if (!receiverPhone || !amount) {
+      Alert.alert('Error', 'Please fill all fields');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://YOUR_SERVER_IP:3000/api/transfer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          senderId: 1, // Logged in user ID
+          receiverId: 2, // Resolved from phone number
+          amount: parseFloat(amount)
+        })
+      });
+      const data = await response.json();
+      if (data.success) {
+        Alert.alert('Success', 'Transaction Complete!');
+      } else {
+        Alert.alert('Failed', data.message);
+      }
+    } catch (err) {
+      Alert.alert('Error', 'Network Error');
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.header}>Send Money</Text>
+      <TextInput 
+        style={styles.input} 
+        placeholder="Receiver Mobile Number" 
+        keyboardType="phone-pad"
+        value={receiverPhone}
+        onChangeText={setReceiverPhone}
+      />
+      <TextInput 
+        style={styles.input} 
+        placeholder="Amount (PKR)" 
+        keyboardType="numeric"
+        value={amount}
+        onChangeText={setAmount}
+      />
+      <TouchableOpacity style={styles.btn} onPress={handleTransfer}>
+        <Text style={styles.btnText}>Proceed Transfer</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+const styles = StyleSheet.StyleSheet.create({
+  container: { flex: 1, padding: 20, justifyContent: 'center', backgroundColor: '#fff' },
+  header: { fontSize: 24, fontWeight: 'bold', marginBottom: 20, textAlign: 'center' },
+  input: { borderWidth: 1, borderColor: '#ccc', borderRadius: 8, padding: 12, marginBottom: 15 },
+  btn: { backgroundColor: '#00B050', padding: 15, borderRadius: 8, alignItems: 'center' },
+  btnText: { color: '#fff', fontSize: 16, fontWeight: 'bold' }
+});

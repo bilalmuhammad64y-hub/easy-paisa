@@ -1,0 +1,29 @@
+-- Users Table
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    full_name VARCHAR(100) NOT NULL,
+    phone_number VARCHAR(15) UNIQUE NOT NULL,
+    cnic VARCHAR(13) UNIQUE NOT NULL,
+    pin_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Wallets Table
+CREATE TABLE wallets (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id) ON DELETE CASCADE,
+    balance DECIMAL(12, 2) DEFAULT 0.00,
+    currency VARCHAR(3) DEFAULT 'PKR',
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Transactions Table
+CREATE TABLE transactions (
+    id SERIAL PRIMARY KEY,
+    sender_wallet_id INT REFERENCES wallets(id),
+    receiver_wallet_id INT REFERENCES wallets(id),
+    amount DECIMAL(12, 2) NOT NULL,
+    type VARCHAR(20) NOT NULL, -- 'TRANSFER', 'TOPUP', 'BILL_PAY'
+    status VARCHAR(20) DEFAULT 'PENDING', -- 'SUCCESS', 'FAILED', 'PENDING'
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
