@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EasyPaisa Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Arial, sans-serif; }
+    .hero-glow {
+      background: radial-gradient(circle at top left, rgba(59,130,246,0.2), transparent 35%),
+                  radial-gradient(circle at bottom right, rgba(16,185,129,0.18), transparent 30%),
+                  #0f172a;
+    }
+    .product-card:hover { transform: translateY(-4px); }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <header class="bg-slate-900 text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center font-bold">E</div>
+        <div>
+          <div class="text-xl font-extrabold tracking-wide">EasyPaisa</div>
+          <div class="text-[10px] uppercase tracking-[0.2em] text-slate-300">Market</div>
+        </div>
+      </div>
+
+      <div class="hidden md:flex flex-1 max-w-xl items-center mx-6">
+        <input type="text" placeholder="Search products, brands and more" class="w-full px-4 py-3 rounded-l-full text-gray-900 focus:outline-none" />
+        <button class="bg-blue-600 hover:bg-blue-500 px-5 py-3 rounded-r-full text-white">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-medium">
+        <a href="#" class="hover:text-blue-400">Home</a>
+        <a href="#products" class="hover:text-blue-400">Products</a>
+        <a href="#offers" class="hover:text-blue-400">Offers</a>
+        <a href="#reviews" class="hover:text-blue-400">Reviews</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <button class="relative text-2xl hover:text-blue-400">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="cart-count" class="absolute -top-2 -right-2 bg-blue-500 text-xs w-5 h-5 rounded-full flex items-center justify-center text-white font-bold">0</span>
+        </button>
+        <button class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-full text-sm font-semibold">Login</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-glow text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 items-center gap-10">
+        <div>
+          <p class="text-blue-400 font-semibold uppercase tracking-[0.25em] text-xs mb-4">Big sale is live</p>
+          <h1 class="text-4xl md:text-5xl font-black leading-tight mb-5">Shop smarter for tech, gadgets and home essentials.</h1>
+          <p class="text-slate-300 text-lg mb-7 max-w-xl">Discover premium products with secure delivery, amazing discounts, and trusted customer service.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#products" class="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-full font-semibold">Shop Now</a>
+            <a href="#offers" class="bg-white text-slate-900 hover:bg-slate-200 px-6 py-3 rounded-full font-semibold">View Deals</a>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-8 text-sm text-slate-200">
+            <div><span class="block text-2xl font-bold text-white">20k+</span> Happy customers</div>
+            <div><span class="block text-2xl font-bold text-white">4.9/5</span> Average rating</div>
+            <div><span class="block text-2xl font-bold text-white">24/7</span> Support</div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-5 shadow-2xl border border-white/10">
+            <div class="bg-gradient-to-br from-blue-500 to-cyan-400 rounded-2xl p-6 text-white">
+              <div class="flex justify-between items-center mb-6">
+                <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-semibold">Limited Offer</span>
+                <span class="text-xl font-bold">UP TO 50%</span>
+              </div>
+              <div class="space-y-4">
+                <div class="bg-white/10 rounded-2xl p-4">
+                  <p class="text-xs uppercase tracking-widest text-blue-100">Featured</p>
+                  <h2 class="text-3xl font-black mt-2">Noise Cancelling Headphones</h2>
+                </div>
+                <div class="flex items-end justify-between">
+                  <div>
+                    <p class="text-blue-100 text-sm">Now</p>
+                    <p class="text-4xl font-black">$129</p>
+                  </div>
+                  <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=700&q=80" alt="Headphones" class="w-40 h-28 object-cover rounded-2xl shadow-lg" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 py-10">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl shadow-sm p-5 flex items-center gap-4">
+          <div class="bg-blue-100 text-blue-600 w-12 h-12 rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-truck-fast"></i></div>
+          <div>
+            <h3 class="font-bold text-lg">Free Delivery</h3>
+            <p class="text-sm text-gray-500">On orders above $50</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm p-5 flex items-center gap-4">
+          <div class="bg-green-100 text-green-600 w-12 h-12 rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-shield-heart"></i></div>
+          <div>
+            <h3 class="font-bold text-lg">Secure Payment</h3>
+            <p class="text-sm text-gray-500">100% protected checkout</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm p-5 flex items-center gap-4">
+          <div class="bg-amber-100 text-amber-600 w-12 h-12 rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-headset"></i></div>
+          <div>
+            <h3 class="font-bold text-lg">24/7 Support</h3>
+            <p class="text-sm text-gray-500">Always here for help</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="offers" class="max-w-7xl mx-auto px-4 py-4">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-3xl font-black text-slate-900">Shop by Category</h2>
+        <a href="#" class="text-blue-600 font-semibold">See all</a>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=80" alt="Electronics" class="h-52 w-full object-cover" />
+          <div class="p-4">
+            <h3 class="font-bold text-lg">Electronics</h3>
+            <p class="text-sm text-gray-500 mt-1">Latest gadgets</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80" alt="Accessories" class="h-52 w-full object-cover" />
+          <div class="p-4">
+            <h3 class="font-bold text-lg">Accessories</h3>
+            <p class="text-sm text-gray-500 mt-1">Smart extras</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80" alt="Audio" class="h-52 w-full object-cover" />
+          <div class="p-4">
+            <h3 class="font-bold text-lg">Audio</h3>
+            <p class="text-sm text-gray-500 mt-1">Premium sound</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=700&q=80" alt="Home" class="h-52 w-full object-cover" />
+          <div class="p-4">
+            <h3 class="font-bold text-lg">Home</h3>
+            <p class="text-sm text-gray-500 mt-1">Comfort essentials</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="max-w-7xl mx-auto px-4 py-12">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-3xl font-black text-slate-900">Featured Products</h2>
+        <span class="text-sm text-gray-500">Show 1-6 of 24 products</span>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="product-card bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden transition duration-300">
+          <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80" alt="Headphones" class="w-full h-56 object-cover" />
+          <div class="p-5">
+            <span class="text-xs font-bold uppercase text-blue-600">Audio</span>
+            <h3 class="text-xl font-bold mt-2">Wireless Headphones</h3>
+            <p class="text-sm text-gray-500 mt-2">Noise cancelling • Bluetooth 5.3</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div>
+                <span class="text-2xl font-black">$129</span>
+                <span class="text-gray-400 line-through ml-2">$179</span>
+              </div>
+              <button class="add-to-cart bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-full font-semibold">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden transition duration-300">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80" alt="Watch" class="w-full h-56 object-cover" />
+          <div class="p-5">
+            <span class="text-xs font-bold uppercase text-blue-600">Wearables</span>
+            <h3 class="text-xl font-bold mt-2">Smart Smartwatch</h3>
+            <p class="text-sm text-gray-500 mt-2">Fitness tracking • AMOLED display</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div>
+                <span class="text-2xl font-black">$199</span>
+                <span class="text-gray-400 line-through ml-2">$249</span>
+              </div>
+              <button class="add-to-cart bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-full font-semibold">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden transition duration-300">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Laptop" class="w-full h-56 object-cover" />
+          <div class="p-5">
+            <span class="text-xs font-bold uppercase text-blue-600">Electronics</span>
+            <h3 class="text-xl font-bold mt-2">Laptop Pro 14</h3>
+            <p class="text-sm text-gray-500 mt-2">Intel i7 • 16GB RAM</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div>
+                <span class="text-2xl font-black">$899</span>
+                <span class="text-gray-400 line-through ml-2">$1099</span>
+              </div>
+              <button class="add-to-cart bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-full font-semibold">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden transition duration-300">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80" alt="Speaker" class="w-full h-56 object-cover" />
+          <div class="p-5">
+            <span class="text-xs font-bold uppercase text-blue-600">Audio</span>
+            <h3 class="text-xl font-bold mt-2">Portable Speaker</h3>
+            <p class="text-sm text-gray-500 mt-2">360-degree sound • waterproof</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div>
+                <span class="text-2xl font-black">$89</span>
+                <span class="text-gray-400 line-through ml-2">$119</span>
+              </div>
+              <button class="add-to-cart bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-full font-semibold">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden transition duration-300">
+          <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=800&q=80" alt="Lamp" class="w-full h-56 object-cover" />
+          <div class="p-5">
+            <span class="text-xs font-bold uppercase text-blue-600">Home</span>
+            <h3 class="text-xl font-bold mt-2">Smart Desk Lamp</h3>
+            <p class="text-sm text-gray-500 mt-2">LED • touch control • USB</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div>
+                <span class="text-2xl font-black">$59</span>
+                <span class="text-gray-400 line-through ml-2">$79</span>
+              </div>
+              <button class="add-to-cart bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-full font-semibold">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden transition duration-300">
+          <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80" alt="Gaming" class="w-full h-56 object-cover" />
+          <div class="p-5">
+            <span class="text-xs font-bold uppercase text-blue-600">Gaming</span>
+            <h3 class="text-xl font-bold mt-2">Game Controller</h3>
+            <p class="text-sm text-gray-500 mt-2">Wireless • vibration feedback</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div>
+                <span class="text-2xl font-black">$69</span>
+                <span class="text-gray-400 line-through ml-2">$95</span>
+              </div>
+              <button class="add-to-cart bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-full font-semibold">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="bg-slate-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <p class="text-blue-400 font-semibold uppercase tracking-[0.25em] text-xs">Why choose us</p>
+          <h2 class="text-3xl font-black mt-3">Trusted by thousands of shoppers.</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-6 text-center">
+          <div>
+            <p class="text-4xl font-black text-blue-400">98%</p>
+            <p class="text-slate-300">Customer satisfaction</p>
+          </div>
+          <div>
+            <p class="text-4xl font-black text-blue-400">15k+</p>
+            <p class="text-slate-300">Products sold</p>
+          </div>
+          <div>
+            <p class="text-4xl font-black text-blue-400">1.2k</p>
+            <p class="text-slate-300">Reviews</p>
+          </div>
+          <div>
+            <p class="text-4xl font-black text-blue-400">48h</p>
+            <p class="text-slate-300">Fast delivery</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="max-w-7xl mx-auto px-4 py-12">
+      <div class="mb-6 text-center">
+        <p class="text-blue-600 font-semibold uppercase tracking-[0.25em] text-xs">Testimonials</p>
+        <h2 class="text-3xl font-black mt-3">What customers say</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl shadow-sm p-6">
+          <div class="text-yellow-400 mb-3">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-600">“The quality is excellent and the delivery was super fast. I will definitely order again.”</p>
+          <div class="mt-5 font-bold">Ayesha Khan</div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm p-6">
+          <div class="text-yellow-400 mb-3">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-600">“Beautiful design and smooth checkout. The products feel premium and worth the price.”</p>
+          <div class="mt-5 font-bold">Ali Hassan</div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm p-6">
+          <div class="text-yellow-400 mb-3">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-600">“Very easy to shop, excellent support, and great deals on electronics. Highly recommended.”</p>
+          <div class="mt-5 font-bold">Mariam Noor</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-slate-950 text-slate-300 py-10">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8">
+      <div>
+        <div class="text-2xl font-black text-white">EasyPaisa</div>
+        <p class="mt-3 text-sm text-slate-400">Your one-stop destination for premium tech and everyday essentials.</p>
+      </div>
+      <div>
+        <h3 class="font-bold text-white mb-3">Company</h3>
+        <ul class="space-y-2 text-sm">
+          <li>About Us</li>
+          <li>Contact</li>
+          <li>Careers</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold text-white mb-3">Support</h3>
+        <ul class="space-y-2 text-sm">
+          <li>Help Center</li>
+          <li>Shipping</li>
+          <li>Returns</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold text-white mb-3">Follow Us</h3>
+        <div class="flex gap-3 text-lg">
+          <i class="fa-brands fa-facebook-f"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-youtube"></i>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-slate-800 text-sm text-slate-500 text-center">
+      © 2026 EasyPaisa Market. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const cartCount = document.getElementById('cart-count');
+    let count = 0;
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        count += 1;
+        cartCount.textContent = count;
+        button.textContent = 'Added';
+        button.classList.add('bg-green-600', 'hover:bg-green-500');
+        button.classList.remove('bg-blue-600', 'hover:bg-blue-500');
+        setTimeout(() => {
+          button.textContent = 'Add to Cart';
+          button.classList.add('bg-blue-600', 'hover:bg-blue-500');
+          button.classList.remove('bg-green-600', 'hover:bg-green-500');
+        }, 1000);
+      });
+    });
+  </script>
+</body>
+</html>
