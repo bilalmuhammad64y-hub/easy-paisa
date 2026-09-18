@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart | StackMarket Store</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="html" class="brand" aria-label="EasyPaisa">
+        <span class="brand-mark">E</span>
+        <span class="brand-copy">
+          <!-- <strong>EasyPaisa</strong> -->
+          <small>MARKET</small>
+          <!-- <span class="brand-bottom">EasyPaisa</span> -->
+        </span>
+      </a>
+      <div class="nav-actions">
+        <a href="products.html" class="btn btn-light">Continue Shopping</a>
+        <a href="checkout.html" class="btn btn-primary">Checkout</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container section-space">
+    <h2 style="margin-bottom: 24px;">Your Cart</h2>
+
+    <div class="cart-layout">
+      <div class="cart-items">
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80" alt="Headphones" />
+          <div>
+            <h3>Wireless Headphones</h3>
+            <p>Qty: 1</p>
+          </div>
+          <strong>$129</strong>
+        </div>
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80" alt="Watch" />
+          <div>
+            <h3>Smart Smartwatch</h3>
+            <p>Qty: 1</p>
+          </div>
+          <strong>$199</strong>
+        </div>
+      </div>
+
+      <aside class="checkout-card">
+        <h3>Order Summary</h3>
+        <div class="summary-row"><span>Subtotal</span><span>$328</span></div>
+        <div class="summary-row"><span>Shipping</span><span>$0</span></div>
+        <div class="summary-row total"><span>Total</span><span>$328</span></div>
+        <a href="checkout.html" class="btn btn-primary full-width">Proceed to Checkout</a>
+      </aside>
+    </div>
+  </main>
+
+  <style>
+    .cart-layout {
+      display: grid;
+      grid-template-columns: 1.5fr 0.8fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .cart-items {
+      display: grid;
+      gap: 16px;
+    }
+    .cart-item {
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      gap: 18px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 16px;
+      align-items: center;
+    }
+    .cart-item img {
+      width: 120px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    .cart-item h3 { margin: 0 0 8px; }
+    .cart-item p { margin: 0; color: #6b7280; }
+    .checkout-card {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 8px 18px rgba(15,23,42,0.04);
+    }
+    .checkout-card h3 { margin-top: 0; }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 16px 0;
+      color: #374151;
+    }
+    .summary-row.total {
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding-top: 14px;
+      border-top: 1px solid #e5e7eb;
+    }
+    .full-width { width: 100%; margin-top: 8px; }
+    @media (max-width: 768px) {
+      .cart-layout { grid-template-columns: 1fr; }
+      .cart-item { grid-template-columns: 1fr; }
+    }
+  </style>
+</body>
+</html>

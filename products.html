@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products | StackMarket Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="html" class="brand" aria-label="stackmarket">
+        <span class="brand-mark">E</span>
+        <span class="brand-copy">
+          <strong>stackmarket</strong>
+          <small>MARKET</small>
+          <!-- <span class="brand-bottom">EasyPaisa</span> -->
+        </span>
+      </a>
+      <div class="search-box hidden-mobile">
+        <input type="text" placeholder="Search products" />
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+      <nav class="main-nav hidden-tablet">
+        <a href="html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="checkout.html">Checkout</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="cart.html" class="cart-button" aria-label="Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-count">0</span>
+        </a>
+        <a href="checkout.html" class="btn btn-primary">Checkout</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container section-space">
+    <div class="section-head">
+      <h2>All Products</h2>
+    </div>
+
+    <div class="product-grid" data-limit="0"></div>
+
+    <div class="single-product-wrapper">
+      <h2>Selected Product</h2>
+      <div id="single-product" class="single-product"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand footer-brand" aria-label="EasyPaisa">
+          <span class="brand-mark">E</span>
+          <span class="brand-copy">
+            <strong>EasyPaisa</strong>
+            <small>MARKET</small>
+            <span class="brand-bottom">EasyPaisa</span>
+          </span>
+        </div>
+        <p>Your one-stop destination for premium tech and everyday essentials.</p>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li>About Us</li>
+          <li>Contact</li>
+          <li>Careers</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Support</h3>
+        <ul>
+          <li>Help Center</li>
+          <li>Shipping</li>
+          <li>Returns</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Follow Us</h3>
+        <div class="socials">
+          <i class="fa-brands fa-facebook-f"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-youtube"></i>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">© 2026 StackMarket. All rights reserved.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

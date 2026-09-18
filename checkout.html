@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout | StackMarket Store</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .panel {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 12px 20px rgba(15,23,42,0.04);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .field { display: grid; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    .field input, .field select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid #d1d5db;
+      background: white;
+    }
+    .summary-box {
+      background: #f8fafc;
+      border-radius: 20px;
+      padding: 20px;
+      border: 1px solid #e5e7eb;
+    }
+    .summary-box .row {
+      display: flex;
+      justify-content: space-between;
+      margin: 14px 0;
+    }
+    .summary-box .total {
+      border-top: 1px solid #d1d5db;
+      padding-top: 14px;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+    .pay-btn { width: 100%; margin-top: 16px; }
+    @media (max-width: 768px) {
+      .checkout-grid, .form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="html" class="brand" aria-label="stackmarket">
+        <span class="brand-mark">E</span>
+        <span class="brand-copy">
+          <strong>stackmarket</strong>
+          <small>MARKET</small>
+          <span class="brand-bottom">stackmarket</span>
+        </span>
+      </a>
+      <div class="nav-actions">
+        <a href="cart.html" class="btn btn-light">Back to Cart</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container section-space">
+    <h2 style="margin-bottom: 24px;">Checkout</h2>
+
+    <div class="checkout-grid">
+      <div class="panel">
+        <h3>Shipping Details</h3>
+        <div class="form-grid" style="margin-top: 20px;">
+          <div class="field">
+            <label>First Name</label>
+            <input type="text" placeholder="Ali" />
+          </div>
+          <div class="field">
+            <label>Last Name</label>
+            <input type="text" placeholder="Hassan" />
+          </div>
+          <div class="field full">
+            <label>Address</label>
+            <input type="text" placeholder="House 12, Main Street" />
+          </div>
+          <div class="field full">
+            <label>City</label>
+            <input type="text" placeholder="Karachi" />
+          </div>
+          <div class="field">
+            <label>Country</label>
+            <select>
+              <option>Pakistan</option>
+              <option>United Arab Emirates</option>
+              <option>USA</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Postal Code</label>
+            <input type="text" placeholder="74200" />
+          </div>
+        </div>
+      </div>
+
+      <aside class="summary-box">
+        <h3>Order Summary</h3>
+        <div class="row"><span>Wireless Headphones</span><span>$129</span></div>
+        <div class="row"><span>Smart Smartwatch</span><span>$199</span></div>
+        <div class="row"><span>Shipping</span><span>Free</span></div>
+        <div class="row total"><span>Total</span><span>$328</span></div>
+        <button class="btn btn-primary pay-btn">Pay Now</button>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

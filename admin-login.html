@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      color: #fff;
+    }
+    .card {
+      width: min(420px, calc(100% - 24px));
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 30px 24px;
+      box-shadow: 0 18px 35px rgba(0,0,0,0.2);
+      backdrop-filter: blur(8px);
+    }
+    h2 { text-align: center; margin-top: 0; }
+    form { display: grid; gap: 16px; }
+    label { font-weight: 600; }
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      color: white;
+    }
+    input::placeholder { color: rgba(255,255,255,0.7); }
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 12px 16px;
+      background: #2563eb;
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .status {
+      min-height: 20px;
+      font-size: 0.9rem;
+      color: #fcd34d;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Admin Login</h2>
+    <form id="loginForm">
+      <div>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" placeholder="admin" required />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="admin123" required />
+      </div>
+      <button type="submit">Login</button>
+      <p id="status" class="status"></p>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const status = document.getElementById('status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = 'Logging in...';
+
+      const payload = {
+        username: document.getElementById('username').value,
+        password: document.getElementById('password').value
+      };
+
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        window.location.href = '/admin';
+      } else {
+        status.textContent = result.message || 'Login failed';
+      }
+    });
+  </script>
+</body>
+</html>

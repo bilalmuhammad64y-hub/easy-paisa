@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "name": "Wireless Headphones",
+    "category": "Audio",
+    "price": 129,
+    "oldPrice": 179,
+    "description": "Noise cancelling • Bluetooth 5.3",
+    "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "2",
+    "name": "Smart Smartwatch",
+    "category": "Wearables",
+    "price": 199,
+    "oldPrice": 249,
+    "description": "Fitness tracking • AMOLED display",
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "3",
+    "name": "Laptop Pro 14",
+    "category": "Electronics",
+    "price": 899,
+    "oldPrice": 1099,
+    "description": "Intel i7 • 16GB RAM",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+  }
+]
